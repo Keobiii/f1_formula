@@ -1,6 +1,7 @@
 import 'package:f1/features/home/app_main_screen.dart';
 import 'package:f1/features/home/home_page.dart';
 import 'package:f1/features/news/news_page.dart';
+import 'package:f1/features/onboarding/onboarding_page.dart';
 import 'package:f1/features/rank/rank_page.dart';
 import 'package:f1/features/teams/teams_page.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ final GoRouter router = GoRouter(
   redirect: (context, state) {},
 
   routes: [
-    GoRoute(path: '/onboarding', builder: (context, state) => const HomePage()),
+    GoRoute(path: '/onboarding', builder: (context, state) => const OnBoardingPage()),
 
     ShellRoute(
       builder: (context, state, child) {
@@ -19,6 +20,11 @@ final GoRouter router = GoRouter(
       },
 
       routes: [
+        GoRoute(
+          path: '/onboarding',
+          name: 'oboarding',
+          pageBuilder: (context, state) => fadeTransition(OnBoardingPage(), state),
+        ),
         GoRoute(
           path: '/home',
           name: 'home',
