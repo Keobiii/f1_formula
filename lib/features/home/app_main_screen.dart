@@ -15,115 +15,53 @@ class _AppMainScreenState extends State<AppMainScreen> {
   int _currentIndex = 0;
   final tabs = ['/home', '/news', '/rank', '/teams', '/home'];
 
-
   @override
   Widget build(BuildContext context) {
     final currentLocation = GoRouterState.of(context).uri.toString();
 
     // List of paths where bottom nav should be hidden
-    // final hideBottomNavPaths = [
-    //   '/foodDetails',
-    //   '/viewAllProduct',
-    //   '/signup',
-    //   '/onboarding',
-    // ];
+    final hideBottomNavPaths = ['/onboarding'];
 
-    // final shouldHideBottomNav = hideBottomNavPaths.any(
-    //   (path) => currentLocation.startsWith(path),
-    // );
+    final shouldHideBottomNav = hideBottomNavPaths.any(
+      (path) => currentLocation.startsWith(path),
+    );
     return Scaffold(
-      body: widget.child,
-      bottomNavigationBar:
-          Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Container(
-                    height: 60,
-                    decoration: BoxDecoration(color: Colors.white),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        _buildNavItems(Iconsax.home_15, "A", 0),
-                        _buildNavItems(CupertinoIcons.search, "B", 1),
-                        SizedBox(width: 60),
-                        _buildNavItems(Iconsax.notification, "C", 3),
-                        _buildNavItems(
-                          Iconsax.profile_2user,
-                          "Profile",
-                          4,
-                        ),
-                      ],
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          widget.child,
+          if (!shouldHideBottomNav)
+            Positioned(
+              left: 20,
+              right: 20,
+              bottom: 20,
+              child: Container(
+                height: 70,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 10,
+                      offset: Offset(0, 4),
                     ),
-                  ),
-
-                  Positioned(
-                    bottom: 20,
-                    left: MediaQuery.of(context).size.width / 2 - 30,
-                    child: Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _currentIndex = 2;
-                            });
-                            context.go(tabs[2]);
-                          },
-                          child: CircleAvatar(
-                            backgroundColor: Colors.redAccent,
-                            radius: 30,
-                            child: SizedBox(
-                              width: 35,
-                              height: 35,
-                              child: Stack(
-                                clipBehavior: Clip.none,
-                                children: [
-                                  Center(
-                                    child: Icon(
-                                      Iconsax.shopping_cart,
-                                      size: 28,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  Positioned(
-                                    top: -5,
-                                    right: -5,
-                                    child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 5,
-                                        vertical: 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Colors.white
-                                      ),
-                                      constraints: BoxConstraints(
-                                        minWidth: 20,
-                                        minHeight: 20,
-                                      ),
-                                      child:  Text(
-                                          '0',
-                                          style: TextStyle(
-                                            color: Colors.red,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                
-                ],
-              
+                  ],
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildNavItems(Iconsax.home_15, "A", 0),
+                    _buildNavItems(CupertinoIcons.news, "B", 1),
+                    _buildNavItems(Iconsax.crown, "C", 3),
+                    _buildNavItems(Iconsax.people, "D", 4),
+                  ],
+                ),
               ),
+            ),
+        ],
+      ),
     );
   }
 
@@ -144,12 +82,12 @@ class _AppMainScreenState extends State<AppMainScreen> {
             size: 28,
             color: _currentIndex == index ? Colors.red : Colors.grey,
           ),
-          SizedBox(height: 3),
-          CircleAvatar(
-            radius: 3,
-            backgroundColor:
-                _currentIndex == index ? Colors.red : Colors.transparent,
-          ),
+          // SizedBox(height: 3),
+          // CircleAvatar(
+          //   radius: 3,
+          //   backgroundColor:
+          //       _currentIndex == index ? Colors.red : Colors.transparent,
+          // ),
         ],
       ),
     );
