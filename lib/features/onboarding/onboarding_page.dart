@@ -50,7 +50,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> with TickerProviderStat
               decoration: const BoxDecoration(
                 color: Colors.white,
                 image: DecorationImage(
-                  image: AssetImage('assets/images/bg/driver_bg_3.png'),
+                  image: AssetImage('assets/images/bg/driver_bg_4.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -70,7 +70,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> with TickerProviderStat
             ),
 
             Positioned(
-              top: 100,
+              top: 10,
               left: 0,
               right: 0,
               child: Center(
@@ -87,17 +87,16 @@ class _OnBoardingPageState extends State<OnBoardingPage> with TickerProviderStat
               ),
             ),
 
-            Positioned(
-              bottom: 150,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: AnimatedIntroText(
-                  title: "1984",
-                  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                ),
-              ),
-            ),
+            // Positioned(
+            //   top: 150,
+            //   left: 0,
+            //   right: 0,
+            //   child: Center(
+            //     child: AnimatedIntroText(
+            //       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            //     ),
+            //   ),
+            // ),
 
             Positioned(
               bottom: 20,
