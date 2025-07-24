@@ -3,7 +3,7 @@ import 'package:f1/features/home/home_page.dart';
 import 'package:f1/features/news/news_page.dart';
 import 'package:f1/features/onboarding/onboarding_page.dart';
 import 'package:f1/features/rank/rank_page.dart';
-import 'package:f1/features/teams/teams_page.dart';
+import 'package:f1/features/teams/presentation/screen/teams_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
